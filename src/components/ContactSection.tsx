@@ -7,6 +7,7 @@ import {
   Instagram,
   Twitter,
   Send,
+  Loader2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -59,19 +60,50 @@ const socialLinks = [
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/nabin00032@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact: ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -176,9 +208,18 @@ const ContactSection = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full group">
-                  Send Message
-                  <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <Button type="submit" className="w-full group" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
