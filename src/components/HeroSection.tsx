@@ -1,4 +1,4 @@
-import { ArrowDown, Sparkles, Download } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -84,12 +84,6 @@ const HeroSection = () => {
               behavior: "smooth"
             })}>
                 View Projects
-              </Button>
-              <Button variant="secondary" size="lg" className="group" asChild>
-                <a href="/resume.pdf" download="Nabin_Sarkar_Resume.pdf">
-                  <Download className="mr-2 h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
-                  Download Resume
-                </a>
               </Button>
             </div>
           </div>
