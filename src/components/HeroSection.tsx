@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
   return (
@@ -12,7 +13,7 @@ const HeroSection = () => {
         <div className="animate-fade-in">
           {/* Profile Picture */}
           <Avatar className="w-32 h-32 mx-auto mb-6 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
-            <AvatarImage src="/placeholder.svg" alt="Nabin Sarkar" />
+            <AvatarImage src={profilePhoto} alt="Nabin Sarkar" className="object-cover" />
             <AvatarFallback className="text-3xl font-bold bg-primary text-primary-foreground">
               NS
             </AvatarFallback>
