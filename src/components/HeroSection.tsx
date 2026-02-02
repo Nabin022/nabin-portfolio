@@ -6,36 +6,25 @@ import engineeringSolutions from "@/assets/engineering-solutions.jpg";
 import digitalProductDesign from "@/assets/digital-product-design.jpg";
 import brandIdentity from "@/assets/brand-identity.jpg";
 import pistonThermalAnalysis from "@/assets/piston-thermal-analysis.jpg";
-
-const serviceShowcase = [
-  {
-    title: "Engineering & Technical Solutions",
-    image: engineeringSolutions,
-    accent: "from-blue-500/20 to-cyan-500/20",
-  },
-  {
-    title: "Digital Product & UI/UX Design",
-    image: digitalProductDesign,
-    accent: "from-purple-500/20 to-pink-500/20",
-  },
-  {
-    title: "Brand Identity & Visual Media",
-    image: brandIdentity,
-    accent: "from-emerald-500/20 to-teal-500/20",
-  },
-  {
-    title: "Piston Thermal Analysis",
-    image: pistonThermalAnalysis,
-    accent: "from-orange-500/20 to-red-500/20",
-  },
-];
-
+const serviceShowcase = [{
+  title: "Engineering & Technical Solutions",
+  image: engineeringSolutions,
+  accent: "from-blue-500/20 to-cyan-500/20"
+}, {
+  title: "Digital Product & UI/UX Design",
+  image: digitalProductDesign,
+  accent: "from-purple-500/20 to-pink-500/20"
+}, {
+  title: "Brand Identity & Visual Media",
+  image: brandIdentity,
+  accent: "from-emerald-500/20 to-teal-500/20"
+}, {
+  title: "Piston Thermal Analysis",
+  image: pistonThermalAnalysis,
+  accent: "from-orange-500/20 to-red-500/20"
+}];
 const HeroSection = () => {
-  return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden"
-    >
+  return <section id="home" className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
@@ -67,25 +56,14 @@ const HeroSection = () => {
               <span className="text-foreground">Hi, I'm </span>
               <span className="text-primary relative">
                 Nabin
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-primary/30"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,8 Q25,0 50,8 T100,8"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  />
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" viewBox="0 0 100 12" preserveAspectRatio="none">
+                  <path d="M0,8 Q25,0 50,8 T100,8" fill="none" stroke="currentColor" strokeWidth="3" />
                 </svg>
               </span>
             </h1>
 
             {/* Title */}
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">
-              Mechanical Engineering Student
-            </p>
+            <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">Mechanical Engineer</p>
 
             {/* Bio */}
             <p className="text-muted-foreground max-w-xl mb-8 leading-relaxed text-base md:text-lg">
@@ -96,28 +74,15 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow"
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
+              <Button size="lg" className="group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow" onClick={() => document.getElementById("contact")?.scrollIntoView({
+              behavior: "smooth"
+            })}>
                 Get in Touch
                 <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="group"
-                onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
+              <Button variant="outline" size="lg" className="group" onClick={() => document.getElementById("projects")?.scrollIntoView({
+              behavior: "smooth"
+            })}>
                 View Projects
               </Button>
             </div>
@@ -141,18 +106,10 @@ const HeroSection = () => {
 
             {/* Service Showcase Grid */}
             <div className="grid grid-cols-2 gap-4">
-              {serviceShowcase.map((service, index) => (
-                <div
-                  key={index}
-                  className="group relative overflow-hidden rounded-xl bg-card border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
+              {serviceShowcase.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-xl bg-card border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity`} />
                   <div className="aspect-square overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -160,8 +117,7 @@ const HeroSection = () => {
                       {service.title}
                     </p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -169,17 +125,9 @@ const HeroSection = () => {
         {/* Mobile Service Showcase */}
         <div className="lg:hidden mt-12 animate-fade-in">
           <div className="grid grid-cols-2 gap-3">
-            {serviceShowcase.map((service, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-xl bg-card border shadow-sm"
-              >
+            {serviceShowcase.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-xl bg-card border shadow-sm">
                 <div className="aspect-square overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-2">
@@ -187,8 +135,7 @@ const HeroSection = () => {
                     {service.title}
                   </p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </div>
@@ -200,8 +147,6 @@ const HeroSection = () => {
           <ArrowDown className="h-5 w-5 text-muted-foreground" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
