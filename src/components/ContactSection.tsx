@@ -18,10 +18,9 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 // EmailJS credentials (public keys - safe to include in client code)
-// Get these from https://dashboard.emailjs.com after signing up
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "service_v5irr2l";
+const EMAILJS_TEMPLATE_ID = "template_9tpaztn";
+const EMAILJS_PUBLIC_KEY = "EIO93XYjSAcBvwM7m";
 
 const contactInfo = [
   {
