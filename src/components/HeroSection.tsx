@@ -66,7 +66,7 @@ const HeroSection = () => {
             <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">Mechanical Engineer</p>
 
             {/* Bio */}
-            <p className="text-muted-foreground max-w-xl mb-8 leading-relaxed text-base md:text-lg">
+            <p className="text-muted-foreground mb-8 leading-relaxed text-base md:text-lg">
               Final-year Mechanical Engineering student with hands-on exposure to
               thermal power plants and experience in design and analysis using
               tools like ANSYS and AutoCAD.
