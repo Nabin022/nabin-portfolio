@@ -2,16 +2,16 @@ import { Progress } from "@/components/ui/progress";
 import { Wrench, Monitor } from "lucide-react";
 
 const mechanicalSkills = [
-  { name: "Engineering Drawing", level: 85 },
   { name: "Thermal Engineering", level: 80 },
-  { name: "Basic Manufacturing Processes", level: 75 },
+  { name: "Manufacturing Engineering", level: 75 },
+  { name: "Engineering Drawing", level: 85 },
   { name: "Basic Welding", level: 70 },
 ];
 
 const softwareSkills = [
   { name: "AutoCAD", level: 85 },
   { name: "SolidWorks", level: 60 },
-  { name: "ANSYS (Thermal Analysis)", level: 75 },
+  { name: "ANSYS", level: 75 },
   { name: "MATLAB", level: 55 },
 ];
 
@@ -33,9 +33,9 @@ const SkillBar = ({
   </div>
 );
 
-const SkillsSection = () => {
+const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-muted/30 relative z-10">
+    <section id="skills" className="py-20 relative z-10">
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           My <span className="text-primary">Skills</span>
@@ -89,4 +89,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection;
+export default Skills;

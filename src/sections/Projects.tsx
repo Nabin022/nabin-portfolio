@@ -23,11 +23,10 @@ const projects = [
         text: "Optimized design for performance & reliability",
       },
     ],
-    image: "/placeholder.svg",
   },
 ];
 
-const ProjectsSection = () => {
+const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30 relative z-10">
       <div className="section-container">
@@ -110,4 +109,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default Projects;
