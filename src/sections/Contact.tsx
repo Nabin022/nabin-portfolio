@@ -47,19 +47,19 @@ const socialLinks = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/nabin-sarkar-3b8665252",
     color: "hover:text-[#0077B5]",
   },
   {
     icon: Instagram,
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/nabin.js",
     color: "hover:text-[#E4405F]",
   },
   {
     icon: Twitter,
     label: "X (Twitter)",
-    href: "#",
+    href: "https://x.com/Nabin_2022",
     color: "hover:text-foreground",
   },
 ];
