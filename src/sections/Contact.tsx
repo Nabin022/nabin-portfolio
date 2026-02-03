@@ -64,7 +64,7 @@ const socialLinks = [
   },
 ];
 
-const ContactSection = () => {
+const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -78,7 +78,6 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Template variables should match your EmailJS template
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -102,7 +101,8 @@ const ContactSection = () => {
       console.error("EmailJS error:", error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or email me directly.",
+        description:
+          "Failed to send message. Please try again or email me directly.",
         variant: "destructive",
       });
     } finally {
@@ -130,9 +130,7 @@ const ContactSection = () => {
                     <info.icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">
-                      {info.label}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{info.label}</p>
                     {info.href ? (
                       <a
                         href={info.href}
@@ -212,7 +210,11 @@ const ContactSection = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full group" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="w-full group"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -234,4 +236,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default Contact;
