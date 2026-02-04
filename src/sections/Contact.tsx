@@ -7,6 +7,7 @@ import {
   Linkedin,
   Instagram,
   Twitter,
+  Github,
   Send,
   Loader2,
 } from "lucide-react";
@@ -49,6 +50,12 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/nabin-sarkar-3b8665252",
     color: "hover:text-[#0077B5]",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/Nabin022",
+    color: "hover:text-foreground",
   },
   {
     icon: Instagram,
