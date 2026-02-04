@@ -64,17 +64,19 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="md:hidden py-6 animate-fade-in bg-background/80 backdrop-blur-md rounded-lg mt-2">
+            <div className="flex flex-col items-center gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-3 px-6 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors w-full text-center"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>
