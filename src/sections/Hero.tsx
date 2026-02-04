@@ -1,4 +1,4 @@
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -99,7 +99,7 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start flex-wrap">
               <Button
                 size="lg"
                 className="group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow"
@@ -123,6 +123,17 @@ const Hero = () => {
                 }
               >
                 View Projects
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                className="group"
+                asChild
+              >
+                <a href="/resume.pdf" download>
+                  <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  Download Resume
+                </a>
               </Button>
             </div>
           </div>
