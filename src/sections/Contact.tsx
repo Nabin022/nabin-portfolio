@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // EmailJS credentials (public keys - safe to include in client code)
 const EMAILJS_SERVICE_ID = "service_v5irr2l";
@@ -73,6 +74,7 @@ const socialLinks = [
 
 const Contact = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollAnimation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -118,16 +120,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative z-10">
+    <section id="contact" className="py-12 md:py-16 relative z-10">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          Get in <span className="text-primary">Touch</span>
-        </h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          Have a project in mind or want to collaborate? Feel free to reach out!
-        </p>
+        <div
+          ref={ref}
+          className={`transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Get in <span className="text-primary">Touch</span>
+          </h2>
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
+            Have a project in mind or want to collaborate? Feel free to reach out!
+          </p>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-6">
             {contactInfo.map((info, index) => (
@@ -237,6 +245,7 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     </section>
