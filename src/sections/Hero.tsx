@@ -214,13 +214,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground">Scroll</span>
-          <ArrowDown className="h-5 w-5 text-muted-foreground" />
-        </div>
-      </div>
     </section>
   );
 };
