@@ -1,12 +1,11 @@
-import { Progress } from "@/components/ui/progress";
-import { Wrench, Monitor } from "lucide-react";
+import { Wrench, Monitor, Cpu, Cog } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const mechanicalSkills = [
-  { name: "Thermal Engineering", level: 80 },
-  { name: "Manufacturing Engineering", level: 75 },
-  { name: "Engineering Drawing", level: 85 },
-  { name: "Basic Welding", level: 70 },
+  { name: "Thermal Engineering", level: 80, icon: Cog },
+  { name: "Manufacturing Engineering", level: 75, icon: Wrench },
+  { name: "Engineering Drawing", level: 85, icon: Cpu },
+  { name: "Basic Welding", level: 70, icon: Wrench },
 ];
 
 const softwareSkills = [
@@ -21,23 +20,50 @@ const SkillBar = ({
   level,
   delay,
   isVisible,
+  variant = "primary",
 }: {
   name: string;
   level: number;
   delay: number;
   isVisible: boolean;
+  variant?: "primary" | "accent";
 }) => (
   <div
-    className={`mb-4 transition-all duration-500 ${
+    className={`mb-5 transition-all duration-500 ${
       isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
     }`}
     style={{ transitionDelay: `${delay}ms` }}
   >
     <div className="flex justify-between mb-2">
       <span className="text-sm font-medium text-foreground">{name}</span>
-      <span className="text-sm text-primary font-medium">{level}%</span>
+      <span className={`text-sm font-bold ${variant === "primary" ? "text-primary" : "text-accent"}`}>
+        {level}%
+      </span>
     </div>
-    <Progress value={isVisible ? level : 0} className="h-2 transition-all duration-1000" />
+    <div className="relative h-3 w-full overflow-hidden rounded-full bg-secondary/50 backdrop-blur-sm">
+      <div
+        className={`h-full rounded-full transition-all duration-1000 ease-out ${
+          variant === "primary"
+            ? "bg-gradient-to-r from-primary via-primary to-primary/70"
+            : "bg-gradient-to-r from-accent via-accent to-accent/70"
+        }`}
+        style={{
+          width: isVisible ? `${level}%` : "0%",
+          boxShadow: isVisible
+            ? variant === "primary"
+              ? "0 0 20px hsl(var(--primary) / 0.4)"
+              : "0 0 20px hsl(var(--accent) / 0.4)"
+            : "none",
+        }}
+      />
+      {/* Animated shine effect */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-1000 ${
+          isVisible ? "translate-x-full" : "-translate-x-full"
+        }`}
+        style={{ transitionDelay: `${delay + 500}ms` }}
+      />
+    </div>
   </div>
 );
 
@@ -56,50 +82,74 @@ const Skills = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             My <span className="text-primary">Skills</span>
           </h2>
-          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
             A blend of core mechanical engineering competencies and modern CAD/CAE
             software proficiency.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Mechanical Skills */}
-            <div className="bg-card rounded-xl p-6 shadow-lg border">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                  <Wrench className="h-6 w-6" />
+            {/* Mechanical Skills Card */}
+            <div className="group relative bg-gradient-to-br from-card via-card to-card/80 rounded-2xl p-6 shadow-xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[60px] rounded-tr-2xl" />
+              
+              <div className="flex items-center gap-4 mb-8 relative">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:bg-primary/30 transition-colors" />
+                  <div className="relative p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary border border-primary/20">
+                    <Wrench className="h-6 w-6" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold">Core Mechanical Skills</h3>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">Core Mechanical Skills</h3>
+                  <p className="text-xs text-muted-foreground">Engineering fundamentals</p>
+                </div>
               </div>
 
-              {mechanicalSkills.map((skill, index) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  delay={index * 100}
-                  isVisible={isVisible}
-                />
-              ))}
+              <div className="space-y-1">
+                {mechanicalSkills.map((skill, index) => (
+                  <SkillBar
+                    key={skill.name}
+                    name={skill.name}
+                    level={skill.level}
+                    delay={index * 100}
+                    isVisible={isVisible}
+                    variant="primary"
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Software Skills */}
-            <div className="bg-card rounded-xl p-6 shadow-lg border">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-lg bg-accent/10 text-accent">
-                  <Monitor className="h-6 w-6" />
+            {/* Software Skills Card */}
+            <div className="group relative bg-gradient-to-br from-card via-card to-card/80 rounded-2xl p-6 shadow-xl border border-border/50 hover:border-accent/30 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/5">
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-[60px] rounded-tr-2xl" />
+              
+              <div className="flex items-center gap-4 mb-8 relative">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-accent/20 rounded-xl blur-lg group-hover:bg-accent/30 transition-colors" />
+                  <div className="relative p-3 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 text-accent border border-accent/20">
+                    <Monitor className="h-6 w-6" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold">Software & Tools</h3>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">Software & Tools</h3>
+                  <p className="text-xs text-muted-foreground">CAD/CAE proficiency</p>
+                </div>
               </div>
 
-              {softwareSkills.map((skill, index) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  delay={index * 100}
-                  isVisible={isVisible}
-                />
-              ))}
+              <div className="space-y-1">
+                {softwareSkills.map((skill, index) => (
+                  <SkillBar
+                    key={skill.name}
+                    name={skill.name}
+                    level={skill.level}
+                    delay={index * 100}
+                    isVisible={isVisible}
+                    variant="accent"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
