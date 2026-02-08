@@ -5,7 +5,7 @@ const About = () => {
     ref,
     isVisible
   } = useScrollAnimation();
-  return <section id="about" className="py-12 md:py-16 relative z-10">
+  return <section id="about" className="min-h-screen py-12 md:py-16 relative z-10 flex items-center">
       <div className="section-container">
         <div ref={ref} className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
