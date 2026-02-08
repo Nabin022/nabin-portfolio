@@ -1,6 +1,6 @@
 import { Wrench, Monitor, Cpu, Cog } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
+import skillsBg from "@/assets/skills-bg.jpg";
 const mechanicalSkills = [
   { name: "Thermal Engineering", level: 80, icon: Cog },
   { name: "Manufacturing Engineering", level: 75, icon: Wrench },
@@ -71,8 +71,20 @@ const Skills = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="skills" className="py-12 md:py-16 relative z-10">
-      <div className="section-container">
+    <section
+      id="skills"
+      className="min-h-screen py-16 md:py-24 relative z-10 flex items-center"
+      style={{
+        backgroundImage: `url(${skillsBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
+      
+      <div className="section-container relative z-10">
         <div
           ref={ref}
           className={`transition-all duration-700 ${
