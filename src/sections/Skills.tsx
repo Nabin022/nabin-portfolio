@@ -1,6 +1,9 @@
 import { Wrench, Monitor, Cpu, Cog } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import skillsBg from "@/assets/skills-bg.jpg";
+import mechanicalCardBg from "@/assets/mechanical-card-bg.jpg";
+import softwareCardBg from "@/assets/software-card-bg.jpg";
+
 const mechanicalSkills = [
   { name: "Thermal Engineering", level: 80, icon: Cog },
   { name: "Manufacturing Engineering", level: 75, icon: Wrench },
@@ -99,68 +102,92 @@ const Skills = () => {
             software proficiency.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Mechanical Skills Card */}
-            <div className="group relative bg-gradient-to-br from-card via-card to-card/80 rounded-2xl p-6 shadow-xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
-              {/* Decorative corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[60px] rounded-tr-2xl" />
+          <div className="grid md:grid-cols-1 gap-8">
+            {/* Mechanical Skills Card - Full Width with Background */}
+            <div
+              className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden min-h-[320px]"
+              style={{
+                backgroundImage: `url(${mechanicalCardBg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
               
-              <div className="flex items-center gap-4 mb-8 relative">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:bg-primary/30 transition-colors" />
-                  <div className="relative p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary border border-primary/20">
-                    <Wrench className="h-6 w-6" />
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-[80px] rounded-tr-2xl z-10" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:bg-primary/30 transition-colors" />
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary border border-primary/20">
+                      <Wrench className="h-8 w-8" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">Core Mechanical Skills</h3>
+                    <p className="text-sm text-muted-foreground">Engineering fundamentals</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground">Core Mechanical Skills</h3>
-                  <p className="text-xs text-muted-foreground">Engineering fundamentals</p>
-                </div>
-              </div>
 
-              <div className="space-y-1">
-                {mechanicalSkills.map((skill, index) => (
-                  <SkillBar
-                    key={skill.name}
-                    name={skill.name}
-                    level={skill.level}
-                    delay={index * 100}
-                    isVisible={isVisible}
-                    variant="primary"
-                  />
-                ))}
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-2">
+                  {mechanicalSkills.map((skill, index) => (
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      delay={index * 100}
+                      isVisible={isVisible}
+                      variant="primary"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Software Skills Card */}
-            <div className="group relative bg-gradient-to-br from-card via-card to-card/80 rounded-2xl p-6 shadow-xl border border-border/50 hover:border-accent/30 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/5">
-              {/* Decorative corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-[60px] rounded-tr-2xl" />
+            {/* Software Skills Card - Full Width with Background */}
+            <div
+              className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-accent/30 transition-all duration-300 overflow-hidden min-h-[320px]"
+              style={{
+                backgroundImage: `url(${softwareCardBg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
               
-              <div className="flex items-center gap-4 mb-8 relative">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-accent/20 rounded-xl blur-lg group-hover:bg-accent/30 transition-colors" />
-                  <div className="relative p-3 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 text-accent border border-accent/20">
-                    <Monitor className="h-6 w-6" />
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-accent/20 to-transparent rounded-bl-[80px] rounded-tr-2xl z-10" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-accent/20 rounded-xl blur-lg group-hover:bg-accent/30 transition-colors" />
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 text-accent border border-accent/20">
+                      <Monitor className="h-8 w-8" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">Software & Tools</h3>
+                    <p className="text-sm text-muted-foreground">CAD/CAE proficiency</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground">Software & Tools</h3>
-                  <p className="text-xs text-muted-foreground">CAD/CAE proficiency</p>
-                </div>
-              </div>
 
-              <div className="space-y-1">
-                {softwareSkills.map((skill, index) => (
-                  <SkillBar
-                    key={skill.name}
-                    name={skill.name}
-                    level={skill.level}
-                    delay={index * 100}
-                    isVisible={isVisible}
-                    variant="accent"
-                  />
-                ))}
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-2">
+                  {softwareSkills.map((skill, index) => (
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      delay={index * 100}
+                      isVisible={isVisible}
+                      variant="accent"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
