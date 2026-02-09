@@ -1,14 +1,14 @@
-import { Wrench, Monitor, Cpu, Cog } from "lucide-react";
+import { Wrench, Monitor, Thermometer, PenTool, Factory, Flame } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import skillsBg from "@/assets/skills-bg.jpg";
 import mechanicalCardBg from "@/assets/mechanical-card-bg.jpg";
 import softwareCardBg from "@/assets/software-card-bg.jpg";
 
 const mechanicalSkills = [
-  { name: "Thermal Engineering", level: 80, icon: Cog },
-  { name: "Manufacturing Engineering", level: 75, icon: Wrench },
-  { name: "Engineering Drawing", level: 85, icon: Cpu },
-  { name: "Basic Welding", level: 70, icon: Wrench },
+  { name: "Thermal Engineering", icon: Thermometer, description: "Heat transfer & thermal analysis" },
+  { name: "Engineering Drawing", icon: PenTool, description: "CAD & technical blueprints" },
+  { name: "Manufacturing Engineering", icon: Factory, description: "Production processes" },
+  { name: "Basic Welding", icon: Flame, description: "Joining techniques" },
 ];
 
 const softwareSkills = [
@@ -132,17 +132,25 @@ const Skills = () => {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-x-12 gap-y-2">
-                  {mechanicalSkills.map((skill, index) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      delay={index * 100}
-                      isVisible={isVisible}
-                      variant="primary"
-                    />
-                  ))}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {mechanicalSkills.map((skill, index) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <div
+                        key={skill.name}
+                        className={`group/skill flex flex-col items-center p-5 rounded-xl bg-background/50 border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 ${
+                          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        }`}
+                        style={{ transitionDelay: `${index * 100}ms` }}
+                      >
+                        <div className="p-3 rounded-lg bg-primary/10 text-primary mb-3 group-hover/skill:bg-primary/20 group-hover/skill:scale-110 transition-all duration-300">
+                          <IconComponent className="h-7 w-7" />
+                        </div>
+                        <h4 className="text-sm font-semibold text-foreground text-center mb-1">{skill.name}</h4>
+                        <p className="text-xs text-muted-foreground text-center">{skill.description}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
