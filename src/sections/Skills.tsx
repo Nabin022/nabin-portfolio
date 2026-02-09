@@ -3,6 +3,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import skillsBg from "@/assets/skills-bg.jpg";
 import mechanicalCardBg from "@/assets/mechanical-card-bg.jpg";
 import softwareCardBg from "@/assets/software-card-bg.jpg";
+import autocadIcon from "@/assets/autocad-icon.jpg";
+import solidworksIcon from "@/assets/solidworks-icon.jpg";
+import ansysIcon from "@/assets/ansys-icon.jpg";
+import matlabIcon from "@/assets/matlab-icon.jpg";
 
 const mechanicalSkills = [
   { name: "Thermal Engineering", icon: Thermometer, description: "Heat transfer & thermal analysis" },
@@ -12,63 +16,11 @@ const mechanicalSkills = [
 ];
 
 const softwareSkills = [
-  { name: "AutoCAD", level: 85 },
-  { name: "SolidWorks", level: 60 },
-  { name: "ANSYS", level: 75 },
-  { name: "MATLAB", level: 55 },
+  { name: "AutoCAD", image: autocadIcon, description: "2D/3D drafting & design" },
+  { name: "SolidWorks", image: solidworksIcon, description: "3D CAD modeling" },
+  { name: "ANSYS", image: ansysIcon, description: "FEA & simulation" },
+  { name: "MATLAB", image: matlabIcon, description: "Numerical computing" },
 ];
-
-const SkillBar = ({
-  name,
-  level,
-  delay,
-  isVisible,
-  variant = "primary",
-}: {
-  name: string;
-  level: number;
-  delay: number;
-  isVisible: boolean;
-  variant?: "primary" | "accent";
-}) => (
-  <div
-    className={`mb-5 transition-all duration-500 ${
-      isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-    }`}
-    style={{ transitionDelay: `${delay}ms` }}
-  >
-    <div className="flex justify-between mb-2">
-      <span className="text-sm font-medium text-foreground">{name}</span>
-      <span className={`text-sm font-bold ${variant === "primary" ? "text-primary" : "text-accent"}`}>
-        {level}%
-      </span>
-    </div>
-    <div className="relative h-3 w-full overflow-hidden rounded-full bg-secondary/50 backdrop-blur-sm">
-      <div
-        className={`h-full rounded-full transition-all duration-1000 ease-out ${
-          variant === "primary"
-            ? "bg-gradient-to-r from-primary via-primary to-primary/70"
-            : "bg-gradient-to-r from-accent via-accent to-accent/70"
-        }`}
-        style={{
-          width: isVisible ? `${level}%` : "0%",
-          boxShadow: isVisible
-            ? variant === "primary"
-              ? "0 0 20px hsl(var(--primary) / 0.4)"
-              : "0 0 20px hsl(var(--accent) / 0.4)"
-            : "none",
-        }}
-      />
-      {/* Animated shine effect */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-1000 ${
-          isVisible ? "translate-x-full" : "-translate-x-full"
-        }`}
-        style={{ transitionDelay: `${delay + 500}ms` }}
-      />
-    </div>
-  </div>
-);
 
 const Skills = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -184,16 +136,25 @@ const Skills = () => {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-x-12 gap-y-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {softwareSkills.map((skill, index) => (
-                    <SkillBar
+                    <div
                       key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      delay={index * 100}
-                      isVisible={isVisible}
-                      variant="accent"
-                    />
+                      className={`group/skill flex flex-col items-center p-5 rounded-xl bg-background/50 border border-border/50 hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 ${
+                        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                      }`}
+                      style={{ transitionDelay: `${index * 100}ms` }}
+                    >
+                      <div className="w-14 h-14 rounded-lg overflow-hidden mb-3 grayscale group-hover/skill:grayscale-0 opacity-80 group-hover/skill:opacity-100 group-hover/skill:scale-110 transition-all duration-300">
+                        <img 
+                          src={skill.image} 
+                          alt={skill.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h4 className="text-sm font-semibold text-foreground text-center mb-1">{skill.name}</h4>
+                      <p className="text-xs text-muted-foreground text-center">{skill.description}</p>
+                    </div>
                   ))}
                 </div>
               </div>
