@@ -29,7 +29,7 @@ const contactInfo = [
     icon: MapPin,
     label: "Location",
     value: "Cooch Behar, West Bengal, India",
-    href: null,
+    href: "https://www.google.com/maps/place/Cooch+Behar,+West+Bengal,+India",
   },
   {
     icon: Phone,
@@ -149,6 +149,8 @@ const Contact = () => {
                     {info.href ? (
                       <a
                         href={info.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-medium hover:text-primary transition-colors"
                       >
                         {info.value}
