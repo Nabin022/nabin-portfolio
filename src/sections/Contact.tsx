@@ -149,6 +149,8 @@ const Contact = () => {
                     {info.href ? (
                       <a
                         href={info.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-medium hover:text-primary transition-colors"
                       >
                         {info.value}
