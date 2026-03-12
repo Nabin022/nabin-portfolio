@@ -29,7 +29,7 @@ const contactInfo = [
     icon: MapPin,
     label: "Location",
     value: "Cooch Behar, West Bengal, India",
-    href: null,
+    href: "https://www.google.com/maps/place/Cooch+Behar,+West+Bengal,+India",
   },
   {
     icon: Phone,

@@ -6,25 +6,36 @@ import engineeringSolutions from "@/assets/engineering-solutions.jpg";
 import digitalProductDesign from "@/assets/digital-product-design.jpg";
 import brandIdentity from "@/assets/brand-identity.jpg";
 import pistonThermalAnalysis from "@/assets/piston-thermal-analysis.jpg";
-const serviceShowcase = [{
-  title: "Engineering & Technical Solutions",
-  image: engineeringSolutions,
-  accent: "from-blue-500/20 to-cyan-500/20"
-}, {
-  title: "Digital Product & UI/UX Design",
-  image: digitalProductDesign,
-  accent: "from-purple-500/20 to-pink-500/20"
-}, {
-  title: "Brand Identity & Visual Media",
-  image: brandIdentity,
-  accent: "from-emerald-500/20 to-teal-500/20"
-}, {
-  title: "Piston Thermal Analysis",
-  image: pistonThermalAnalysis,
-  accent: "from-orange-500/20 to-red-500/20"
-}];
+
+const serviceShowcase = [
+  {
+    title: "Engineering & Technical Solutions",
+    image: engineeringSolutions,
+    accent: "from-blue-500/20 to-cyan-500/20",
+  },
+  {
+    title: "Digital Product & UI/UX Design",
+    image: digitalProductDesign,
+    accent: "from-purple-500/20 to-pink-500/20",
+  },
+  {
+    title: "Brand Identity & Visual Media",
+    image: brandIdentity,
+    accent: "from-emerald-500/20 to-teal-500/20",
+  },
+  {
+    title: "Piston Thermal Analysis",
+    image: pistonThermalAnalysis,
+    accent: "from-orange-500/20 to-red-500/20",
+  },
+];
+
 const Hero = () => {
-  return <section id="home" className="min-h-[90vh] flex items-center justify-center relative pt-16 pb-8 overflow-hidden">
+  return (
+    <section
+      id="home"
+      className="min-h-[90vh] flex items-center justify-center relative pt-16 pb-8 overflow-hidden"
+    >
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
@@ -32,26 +43,24 @@ const Hero = () => {
       </div>
 
       <div className="section-container z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Text content */}
-          <div className="text-center lg:text-left animate-fade-in">
+        {/* Desktop: Name + Photo side by side */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mb-12 animate-fade-in">
+          {/* Left - Text */}
+          <div className="text-center lg:text-left flex-1">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <Sparkles className="h-4 w-4" />
               <span>Open to opportunities</span>
             </div>
 
-            {/* Profile Picture - Mobile only */}
+            {/* Mobile profile photo */}
             <div className="lg:hidden mb-6">
               <Avatar className="w-28 h-28 mx-auto ring-4 ring-primary/20 ring-offset-4 ring-offset-background shadow-xl">
                 <AvatarImage src={profilePhoto} alt="Nabin Sarkar" className="object-cover" />
-                <AvatarFallback className="text-3xl font-bold bg-primary text-primary-foreground">
-                  NS
-                </AvatarFallback>
+                <AvatarFallback className="text-3xl font-bold bg-primary text-primary-foreground">NS</AvatarFallback>
               </Avatar>
             </div>
 
-            {/* Name */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
               <span className="text-foreground">Hi, I'm </span>
               <span className="text-primary relative">
@@ -62,13 +71,11 @@ const Hero = () => {
               </span>
             </h1>
 
-            {/* Title */}
             <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">
               Mechanical Engineer
             </p>
 
-            {/* Bio */}
-            <p className="text-muted-foreground mb-8 leading-relaxed text-base md:text-lg">
+            <p className="text-muted-foreground mb-8 leading-relaxed text-base md:text-lg max-w-xl">
               Final-year Mechanical Engineering student with hands-on exposure to
               thermal power plants and experience in design and analysis using
               tools like ANSYS and AutoCAD.
@@ -76,15 +83,11 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start flex-wrap">
-              <Button size="lg" className="group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow" onClick={() => document.getElementById("contact")?.scrollIntoView({
-              behavior: "smooth"
-            })}>
+              <Button size="lg" className="group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
                 Get in Touch
                 <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="group" onClick={() => document.getElementById("projects")?.scrollIntoView({
-              behavior: "smooth"
-            })}>
+              <Button variant="outline" size="lg" className="group" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
                 View Projects
               </Button>
               <Button variant="secondary" size="lg" className="group" asChild>
@@ -96,58 +99,41 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right side - Profile & Service Showcase */}
-          <div className="hidden lg:block relative animate-fade-in">
-            {/* Large Profile Picture */}
-            <div className="relative mb-8 flex justify-center">
-              <div className="relative">
-                <Avatar className="w-40 h-40 ring-4 ring-primary/20 ring-offset-4 ring-offset-background shadow-2xl">
-                  <AvatarImage src={profilePhoto} alt="Nabin Sarkar" className="object-cover" />
-                  <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">
-                    NS
-                  </AvatarFallback>
-                </Avatar>
-                {/* Decorative ring */}
-                <div className="absolute -inset-4 rounded-full border-2 border-dashed border-primary/20 animate-[spin_20s_linear_infinite]" />
-              </div>
-            </div>
-
-            {/* Service Showcase Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {serviceShowcase.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-xl bg-card border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <div className="aspect-square overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="text-xs font-medium text-foreground leading-tight">
-                      {service.title}
-                    </p>
-                  </div>
-                </div>)}
+          {/* Right - Profile Photo (Desktop) */}
+          <div className="hidden lg:flex flex-col items-center">
+            <div className="relative">
+              <Avatar className="w-44 h-44 ring-4 ring-primary/20 ring-offset-4 ring-offset-background shadow-2xl">
+                <AvatarImage src={profilePhoto} alt="Nabin Sarkar" className="object-cover" />
+                <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">NS</AvatarFallback>
+              </Avatar>
+              <div className="absolute -inset-4 rounded-full border-2 border-dashed border-primary/20 animate-[spin_20s_linear_infinite]" />
             </div>
           </div>
         </div>
 
-        {/* Mobile Service Showcase */}
-        <div className="lg:hidden mt-12 animate-fade-in">
-          <div className="grid grid-cols-2 gap-3">
-            {serviceShowcase.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-xl bg-card border shadow-sm">
+        {/* Service Showcase - Centered below for all screens */}
+        <div className="animate-fade-in">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {serviceShowcase.map((service, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-xl bg-card border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity`} />
                 <div className="aspect-square overflow-hidden">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-2">
-                  <p className="text-xs font-medium text-foreground leading-tight">
-                    {service.title}
-                  </p>
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="text-xs font-medium text-foreground leading-tight">{service.title}</p>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;

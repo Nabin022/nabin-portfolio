@@ -1,4 +1,4 @@
-import { Wrench, Monitor, Thermometer, PenTool, Factory, Flame } from "lucide-react";
+import { Wrench, Monitor, Thermometer, PenTool, Factory, Flame, Sparkles, Layout, PenLine, Image, Video } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import skillsBg from "@/assets/skills-bg.jpg";
 import mechanicalCardBg from "@/assets/mechanical-card-bg.jpg";
@@ -22,6 +22,14 @@ const softwareSkills = [
   { name: "MATLAB", image: matlabIcon, description: "Numerical computing" },
 ];
 
+const designSkills = [
+  { name: "UI/UX Design", icon: Layout, description: "Interface layout & usability" },
+  { name: "Wireframing & Prototyping", icon: PenLine, description: "Low & high-fidelity flows" },
+  { name: "Graphic Design", icon: Image, description: "Posters & visual layouts" },
+  { name: "Video Editing", icon: Video, description: "Timelines & motion edits" },
+  { name: "Prompt Engineering & AI", icon: Sparkles, description: "ChatGPT & workflow automation" },
+];
+
 const Skills = () => {
   const { ref, isVisible } = useScrollAnimation();
 
@@ -36,7 +44,6 @@ const Skills = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
       
       <div className="section-container relative z-10">
@@ -50,12 +57,12 @@ const Skills = () => {
             My <span className="text-primary">Skills</span>
           </h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            A blend of core mechanical engineering competencies and modern CAD/CAE
-            software proficiency.
+            A blend of core mechanical engineering competencies, modern CAD/CAE
+            software proficiency, and creative design skills.
           </p>
 
           <div className="grid md:grid-cols-1 gap-8">
-            {/* Mechanical Skills Card - Full Width with Background */}
+            {/* Mechanical Skills Card */}
             <div
               className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden min-h-[320px]"
               style={{
@@ -64,10 +71,7 @@ const Skills = () => {
                 backgroundPosition: "center",
               }}
             >
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
-              
-              {/* Decorative corner accent */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-[80px] rounded-tr-2xl z-10" />
               
               <div className="relative z-10">
@@ -107,7 +111,7 @@ const Skills = () => {
               </div>
             </div>
 
-            {/* Software Skills Card - Full Width with Background */}
+            {/* Software Skills Card */}
             <div
               className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-accent/30 transition-all duration-300 overflow-hidden min-h-[320px]"
               style={{
@@ -116,10 +120,7 @@ const Skills = () => {
                 backgroundPosition: "center",
               }}
             >
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
-              
-              {/* Decorative corner accent */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-accent/20 to-transparent rounded-bl-[80px] rounded-tr-2xl z-10" />
               
               <div className="relative z-10">
@@ -146,16 +147,54 @@ const Skills = () => {
                       style={{ transitionDelay: `${index * 100}ms` }}
                     >
                       <div className="w-14 h-14 rounded-lg overflow-hidden mb-3 grayscale group-hover/skill:grayscale-0 opacity-80 group-hover/skill:opacity-100 group-hover/skill:scale-110 transition-all duration-300">
-                        <img 
-                          src={skill.image} 
-                          alt={skill.name}
-                          className="w-full h-full object-cover"
-                        />
+                        <img src={skill.image} alt={skill.name} className="w-full h-full object-cover" />
                       </div>
                       <h4 className="text-sm font-semibold text-foreground text-center mb-1">{skill.name}</h4>
                       <p className="text-xs text-muted-foreground text-center">{skill.description}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Design, Media & AI Skills Card */}
+            <div className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden min-h-[320px] bg-card">
+              <div className="absolute inset-0 bg-background/60 dark:bg-background/80" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-[80px] rounded-tr-2xl z-10" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:bg-primary/30 transition-colors" />
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary border border-primary/20">
+                      <Sparkles className="h-8 w-8" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">Design, Media & AI Skills</h3>
+                    <p className="text-sm text-muted-foreground">Creative + AI-assisted productivity</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  {designSkills.map((skill, index) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <div
+                        key={skill.name}
+                        className={`group/skill flex flex-col items-center p-5 rounded-xl bg-background/50 border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 ${
+                          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        }`}
+                        style={{ transitionDelay: `${index * 100}ms` }}
+                      >
+                        <div className="p-3 rounded-lg bg-primary/10 text-primary mb-3 group-hover/skill:bg-primary/20 group-hover/skill:scale-110 transition-all duration-300">
+                          <IconComponent className="h-7 w-7" />
+                        </div>
+                        <h4 className="text-sm font-semibold text-foreground text-center mb-1">{skill.name}</h4>
+                        <p className="text-xs text-muted-foreground text-center">{skill.description}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
