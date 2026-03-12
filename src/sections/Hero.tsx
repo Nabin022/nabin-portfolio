@@ -106,7 +106,7 @@ const Hero = () => {
                 <AvatarImage src={profilePhoto} alt="Nabin Sarkar" className="object-cover" />
                 <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">NS</AvatarFallback>
               </Avatar>
-              <div className="absolute -inset-4 rounded-full border-2 border-dashed border-primary/20 animate-[spin_20s_linear_infinite]" />
+              
             </div>
           </div>
         </div>
