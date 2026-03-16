@@ -174,7 +174,7 @@ const Skills = () => {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+              transition={{ duration: 0.6, ease: easeOut, delay: 0.2 }}
               className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden min-h-[320px] bg-card"
             >
               <div className="absolute inset-0 bg-background/60 dark:bg-background/80" />

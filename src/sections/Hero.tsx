@@ -85,7 +85,7 @@ const Hero = () => {
             className="hidden lg:flex flex-col items-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, delay: 0.3, ease: easeOut }}
           >
             <div className="relative">
               <Avatar className="w-44 h-44 ring-4 ring-primary/20 ring-offset-4 ring-offset-background shadow-2xl">
