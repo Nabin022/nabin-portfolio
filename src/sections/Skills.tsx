@@ -120,7 +120,7 @@ const Skills = () => {
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+              transition={{ duration: 0.6, ease: easeOut, delay: 0.1 }}
               className="group relative rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-accent/30 transition-all duration-300 overflow-hidden min-h-[320px]"
               style={{
                 backgroundImage: `url(${softwareCardBg})`,
