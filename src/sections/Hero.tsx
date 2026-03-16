@@ -9,6 +9,8 @@ import brandIdentity from "@/assets/brand-identity.jpg";
 import pistonThermalAnalysis from "@/assets/piston-thermal-analysis.jpg";
 import { staggerContainer, staggerItem } from "@/components/MotionSection";
 
+const easeOut: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
+
 const serviceShowcase = [
   { title: "Engineering & Technical Solutions", image: engineeringSolutions, accent: "from-blue-500/20 to-cyan-500/20" },
   { title: "Digital Product & UI/UX Design", image: digitalProductDesign, accent: "from-purple-500/20 to-pink-500/20" },
