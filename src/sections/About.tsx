@@ -1,17 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { MotionSection } from "@/components/MotionSection";
+
 const About = () => {
-  const {
-    ref,
-    isVisible
-  } = useScrollAnimation();
-  return <section id="about" className="min-h-screen py-12 md:py-16 relative z-10 flex items-center justify-center">
+  return (
+    <section id="about" className="min-h-screen py-12 md:py-16 relative z-10 flex items-center justify-center">
       <div className="section-container">
-        <div ref={ref} className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <MotionSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             About <span className="text-primary">Me</span>
           </h2>
-          
+
           <Card className="max-w-3xl mx-auto border-2">
             <CardContent className="p-8">
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg text-justify font-serif mb-4">
@@ -22,8 +20,10 @@ const About = () => {
               </p>
             </CardContent>
           </Card>
-        </div>
+        </MotionSection>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;

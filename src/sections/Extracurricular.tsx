@@ -1,6 +1,7 @@
 import { Heart, PartyPopper, Users } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { MotionSection, staggerContainer, staggerItem } from "@/components/MotionSection";
 
 const activities = [
   {
@@ -24,17 +25,10 @@ const activities = [
 ];
 
 const Extracurricular = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section id="extracurricular" className="py-12 md:py-16 relative z-10">
       <div className="section-container">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <MotionSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Extra-Curricular <span className="text-primary">Activities</span>
           </h2>
@@ -42,30 +36,32 @@ const Extracurricular = () => {
             Beyond academics — leadership, volunteering, and community involvement.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <motion.div
+            className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
             {activities.map((activity, index) => (
-              <Card
-                key={index}
-                className={`group border hover:border-primary/30 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: `${index * 120}ms` }}
-              >
-                <CardContent className="p-5 text-center">
-                  <div className="mx-auto mb-4 p-3 rounded-full bg-primary/10 text-primary w-fit">
-                    <activity.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2 text-foreground">
-                    {activity.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {activity.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={staggerItem}>
+                <Card className="group border hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+                  <CardContent className="p-5 text-center">
+                    <div className="mx-auto mb-4 p-3 rounded-full bg-primary/10 text-primary w-fit">
+                      <activity.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-semibold text-sm mb-2 text-foreground">
+                      {activity.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {activity.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </MotionSection>
       </div>
     </section>
   );

@@ -1,8 +1,7 @@
-import { ExternalLink, Thermometer, Box, TrendingUp, Cpu, BarChart3 } from "lucide-react";
+import { Thermometer, Box, TrendingUp, Cpu, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { MotionSection } from "@/components/MotionSection";
 import pistonImage from "@/assets/piston-thermal-analysis.jpg";
 
 const projects = [
@@ -44,17 +43,10 @@ const projects = [
 ];
 
 const Projects = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section id="projects" className="py-12 md:py-16 bg-muted/30 relative z-10">
       <div className="section-container">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <MotionSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Featured <span className="text-primary">Projects</span>
           </h2>
@@ -66,10 +58,7 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className={`overflow-hidden border-2 hover:border-primary/30 transition-all duration-500 ${
-                  isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="overflow-hidden border-2 hover:border-primary/30 transition-all duration-300"
               >
                 <div className="grid md:grid-cols-2 gap-0">
                   {/* Project Image */}
@@ -110,7 +99,7 @@ const Projects = () => {
                       </div>
 
                       {/* Tags as links */}
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2">
                         <a href={project.links.ansys} target="_blank" rel="noopener noreferrer">
                           <Badge variant="secondary" className="cursor-pointer hover:bg-primary/20 transition-colors">
                             ANSYS
@@ -132,24 +121,13 @@ const Projects = () => {
                           </Badge>
                         </a>
                       </div>
-
-                      <Button variant="outline" size="sm" className="group" asChild>
-                        <a
-                          href="https://www.ansys.com/products/structures/ansys-mechanical"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Details
-                          <ExternalLink className="ml-2 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-                        </a>
-                      </Button>
                     </CardContent>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
-        </div>
+        </MotionSection>
       </div>
     </section>
   );

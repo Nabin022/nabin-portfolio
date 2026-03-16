@@ -1,6 +1,7 @@
 import { GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { MotionSection, staggerContainer, staggerItem } from "@/components/MotionSection";
 
 const education = [
   {
@@ -24,17 +25,10 @@ const education = [
 ];
 
 const Education = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section id="education" className="py-12 md:py-16 bg-muted/30 relative z-10">
       <div className="section-container">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <MotionSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             My <span className="text-primary">Education</span>
           </h2>
@@ -50,30 +44,30 @@ const Education = () => {
               <h3 className="text-xl font-semibold">Academic Background</h3>
             </div>
 
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
               {education.map((edu, index) => (
-                <Card
-                  key={index}
-                  className={`border-l-4 border-l-primary hover:shadow-md transition-all duration-500 ${
-                    isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
-                  }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-foreground">{edu.degree}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {edu.institution}
-                    </p>
-                    <div className="flex justify-between mt-2 text-sm">
-                      <span className="text-primary font-medium">{edu.year}</span>
-                      <span className="text-muted-foreground">{edu.score}</span>
-                    </div>
-                  </CardContent>
-                </Card>
+                <motion.div key={index} variants={staggerItem}>
+                  <Card className="border-l-4 border-l-primary hover:shadow-md transition-shadow">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold text-foreground">{edu.degree}</h4>
+                      <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                      <div className="flex justify-between mt-2 text-sm">
+                        <span className="text-primary font-medium">{edu.year}</span>
+                        <span className="text-muted-foreground">{edu.score}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </MotionSection>
       </div>
     </section>
   );
