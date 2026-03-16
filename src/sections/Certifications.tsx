@@ -1,7 +1,8 @@
 import { Award, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { MotionSection, staggerContainer, staggerItem } from "@/components/MotionSection";
 
 const certifications = [
   {
@@ -37,17 +38,10 @@ const certifications = [
 ];
 
 const Certifications = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section id="certifications" className="py-12 md:py-16 bg-muted/30 relative z-10">
       <div className="section-container">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <MotionSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             <span className="text-primary">Certifications</span> & Courses
           </h2>
@@ -55,46 +49,48 @@ const Certifications = () => {
             Continuous learning through industry-recognized courses and certifications.
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
             {certifications.map((cert, index) => (
-              <Card
-                key={index}
-                className={`group border hover:border-primary/30 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-5 flex flex-col h-full">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
-                      <Award className="h-4 w-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-sm leading-snug text-foreground mb-1">
-                        {cert.title}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        <Badge variant="secondary" className="text-xs">
-                          {cert.platform}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{cert.year}</span>
+              <motion.div key={index} variants={staggerItem}>
+                <Card className="group border hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+                  <CardContent className="p-5 flex flex-col h-full">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
+                        <Award className="h-4 w-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-sm leading-snug text-foreground mb-1">
+                          {cert.title}
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="secondary" className="text-xs">
+                            {cert.platform}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">{cert.year}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    View Course
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
-                </CardContent>
-              </Card>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                    >
+                      View Course
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </MotionSection>
       </div>
     </section>
   );
