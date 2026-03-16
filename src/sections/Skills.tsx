@@ -1,6 +1,8 @@
 import { Wrench, Monitor, Thermometer, PenTool, Factory, Flame, Sparkles, Layout, PenLine, Image, Video } from "lucide-react";
 import { motion } from "framer-motion";
 import { MotionSection, staggerContainer, staggerItem } from "@/components/MotionSection";
+
+const easeOut: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 import skillsBg from "@/assets/skills-bg.jpg";
 import mechanicalCardBg from "@/assets/mechanical-card-bg.jpg";
 import softwareCardBg from "@/assets/software-card-bg.jpg";
