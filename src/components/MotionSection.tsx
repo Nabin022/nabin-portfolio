@@ -7,33 +7,14 @@ interface MotionSectionProps {
   delay?: number;
 }
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
-};
+const easeOut: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
 export const MotionSection = ({ children, className, delay = 0 }: MotionSectionProps) => (
   <motion.div
-    initial="hidden"
-    whileInView="visible"
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-80px" }}
-    variants={{
-      ...sectionVariants,
-      visible: {
-        ...sectionVariants.visible,
-        transition: {
-          ...sectionVariants.visible.transition,
-          delay,
-        },
-      },
-    }}
+    transition={{ duration: 0.7, ease: easeOut, delay }}
     className={className}
   >
     {children}
@@ -55,6 +36,6 @@ export const staggerItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.5, ease: easeOut },
   },
 };
