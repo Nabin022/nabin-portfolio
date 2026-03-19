@@ -9,9 +9,13 @@ const LoadingScreen = () => {
       aria-label="Loading screen"
     >
       <div className="flex flex-col items-center gap-6 text-center px-6">
-        <div className="relative flex h-24 w-24 items-center justify-center">
-          <div className="animate-gear absolute h-24 w-24 rounded-full border-2 border-dashed border-primary/40" />
-          <div className="animate-gear-reverse absolute h-14 w-14 rounded-full border-2 border-primary" />
+        <div className="relative flex h-28 w-28 items-center justify-center">
+          <div className="animate-gear absolute h-28 w-28 rounded-full border-2 border-dashed border-primary/30" />
+          <div className="animate-gear-reverse absolute h-20 w-20 rounded-full border border-primary/50" />
+          <div className="absolute h-16 w-16 rounded-2xl border border-border bg-card shadow-sm" />
+          <div className="absolute flex h-16 w-16 items-center justify-center rounded-2xl bg-card/80 backdrop-blur-sm">
+            <span className="translate-x-[0.18em] text-lg font-black tracking-[0.3em] text-primary">NS</span>
+          </div>
           <div className="h-3 w-3 rounded-full bg-primary animate-pulse-glow" />
         </div>
 
