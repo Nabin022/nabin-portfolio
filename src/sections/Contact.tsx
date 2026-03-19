@@ -17,7 +17,7 @@ const EMAILJS_TEMPLATE_ID = "template_9tpaztn";
 const EMAILJS_PUBLIC_KEY = "EIO93XYjSAcBvwM7m";
 
 const contactInfo = [
-  { icon: MapPin, label: "Location", value: "Cooch Behar, West Bengal, India", href: "https://www.google.com/maps/place/Cooch+Behar,+West+Bengal,+India" },
+  { icon: MapPin, label: "Location", value: "7FV3+PMG, Cooch Behar", href: "https://www.google.com/maps/search/?api=1&query=7FV3%2BPMG%2C+Cooch+Behar" },
   { icon: Phone, label: "Phone", value: "+91 9083334064", href: "tel:+919083334064" },
   { icon: Mail, label: "Email", value: "nabin00032@gmail.com", href: "mailto:nabin00032@gmail.com" },
 ];
