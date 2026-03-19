@@ -15,9 +15,12 @@ import { MotionSection, staggerContainer, staggerItem } from "@/components/Motio
 const EMAILJS_SERVICE_ID = "service_v5irr2l";
 const EMAILJS_TEMPLATE_ID = "template_9tpaztn";
 const EMAILJS_PUBLIC_KEY = "EIO93XYjSAcBvwM7m";
+const LOCATION_QUERY = "7FV3+PMG, Cooch Behar";
+const LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=7FV3%2BPMG%2C+Cooch+Behar";
+const LOCATION_EMBED_URL = "https://www.google.com/maps?q=7FV3%2BPMG%2C+Cooch+Behar&output=embed";
 
 const contactInfo = [
-  { icon: MapPin, label: "Location", value: "7FV3+PMG, Cooch Behar", href: "https://www.google.com/maps/search/?api=1&query=7FV3%2BPMG%2C+Cooch+Behar" },
+  { icon: MapPin, label: "Location", value: LOCATION_QUERY, href: LOCATION_MAP_URL },
   { icon: Phone, label: "Phone", value: "+91 9083334064", href: "tel:+919083334064" },
   { icon: Mail, label: "Email", value: "nabin00032@gmail.com", href: "mailto:nabin00032@gmail.com" },
 ];
@@ -88,6 +91,33 @@ const Contact = () => {
                   </Card>
                 </motion.div>
               ))}
+
+              <motion.div variants={staggerItem}>
+                <Card className="overflow-hidden border-2">
+                  <a href={LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer" aria-label={`Open map for ${LOCATION_QUERY}`}>
+                    <div className="aspect-[16/10] bg-muted">
+                      <iframe
+                        title={`Map of ${LOCATION_QUERY}`}
+                        src={LOCATION_EMBED_URL}
+                        className="h-full w-full"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  </a>
+                  <CardContent className="p-4 flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Find me here</p>
+                      <p className="font-medium">{LOCATION_QUERY}</p>
+                    </div>
+                    <Button asChild variant="outline">
+                      <a href={LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer">
+                        Open Map
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
 
               <motion.div variants={staggerItem} className="pt-4">
                 <p className="text-sm text-muted-foreground mb-4">Connect with me</p>
