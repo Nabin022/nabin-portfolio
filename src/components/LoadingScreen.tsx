@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import engineerLogo from "@/assets/engineer-logo.png";
 
 const LoadingScreen = () => {
   return (
@@ -8,13 +9,12 @@ const LoadingScreen = () => {
       exit={{ opacity: 0, transition: { duration: 0.45, ease: "easeOut" } }}
       aria-label="Loading screen"
     >
-      <div className="flex flex-col items-center gap-6 text-center px-6">
+      <div className="flex flex-col items-center gap-6 px-6 text-center">
         <div className="relative flex h-28 w-28 items-center justify-center">
           <div className="animate-gear absolute h-28 w-28 rounded-full border-2 border-dashed border-primary/30" />
           <div className="animate-gear-reverse absolute h-20 w-20 rounded-full border border-primary/50" />
-          <div className="absolute h-16 w-16 rounded-2xl border border-border bg-card shadow-sm" />
-          <div className="absolute flex h-16 w-16 items-center justify-center rounded-2xl bg-card/80 backdrop-blur-sm">
-            <span className="translate-x-[0.18em] text-lg font-black tracking-[0.3em] text-primary">NS</span>
+          <div className="absolute flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card/90 p-1 shadow-sm backdrop-blur-sm">
+            <img src={engineerLogo} alt="Nabin Sarkar logo" className="h-full w-full rounded-xl object-cover" />
           </div>
           <div className="h-3 w-3 rounded-full bg-primary animate-pulse-glow" />
         </div>

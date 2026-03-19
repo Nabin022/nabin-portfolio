@@ -15,9 +15,9 @@ import { MotionSection, staggerContainer, staggerItem } from "@/components/Motio
 const EMAILJS_SERVICE_ID = "service_v5irr2l";
 const EMAILJS_TEMPLATE_ID = "template_9tpaztn";
 const EMAILJS_PUBLIC_KEY = "EIO93XYjSAcBvwM7m";
-const LOCATION_QUERY = "7FV3+PMG, Cooch Behar";
-const LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=7FV3%2BPMG%2C+Cooch+Behar";
-const LOCATION_EMBED_URL = "https://www.google.com/maps?q=7FV3%2BPMG%2C+Cooch+Behar&output=embed";
+const LOCATION_QUERY = "26.294376, 89.454376";
+const LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=26.294376%2C89.454376";
+const LOCATION_EMBED_URL = "https://www.google.com/maps?q=26.294376%2C89.454376&z=15&output=embed";
 
 const contactInfo = [
   { icon: MapPin, label: "Location", value: LOCATION_QUERY, href: LOCATION_MAP_URL },
