@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import engineerLogo from "@/assets/engineer-logo.png";
 
 const LoadingScreen = () => {
   return (
@@ -10,13 +9,13 @@ const LoadingScreen = () => {
       aria-label="Loading screen"
     >
       <div className="flex flex-col items-center gap-6 px-6 text-center">
-        <div className="relative flex h-28 w-28 items-center justify-center">
-          <div className="animate-gear absolute h-28 w-28 rounded-full border-2 border-dashed border-primary/30" />
-          <div className="animate-gear-reverse absolute h-20 w-20 rounded-full border border-primary/50" />
-          <div className="absolute flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card/90 p-1 shadow-sm backdrop-blur-sm">
-            <img src={engineerLogo} alt="Nabin Sarkar logo" className="h-full w-full rounded-xl object-cover" />
+        <div className="relative flex h-32 w-32 items-center justify-center">
+          <div className="animate-gear absolute h-32 w-32 rounded-full border-2 border-dashed border-primary/25" />
+          <div className="animate-gear-reverse absolute h-24 w-24 rounded-full border border-primary/40" />
+          <div className="absolute h-16 w-16 rounded-full border-2 border-primary/60 bg-card/80 backdrop-blur-sm shadow-md flex items-center justify-center">
+            <span className="text-xl font-bold tracking-[0.3em] text-primary pl-[0.3em]">NS</span>
           </div>
-          <div className="h-3 w-3 rounded-full bg-primary animate-pulse-glow" />
+          <div className="absolute h-3 w-3 rounded-full bg-primary animate-pulse-glow" />
         </div>
 
         <div className="space-y-2">
