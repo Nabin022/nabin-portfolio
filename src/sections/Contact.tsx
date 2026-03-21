@@ -109,7 +109,7 @@ const Contact = () => {
                   <CardContent className="p-4 flex items-center justify-between gap-4">
                     <div>
                       <p className="text-sm text-muted-foreground">Find me here</p>
-                      <p className="font-medium">{LOCATION_QUERY}</p>
+                      <p className="font-medium">{LOCATION_DISPLAY}</p>
                     </div>
                     <Button asChild variant="outline">
                       <a href={LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer">
