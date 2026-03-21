@@ -9,13 +9,29 @@ const LoadingScreen = () => {
       aria-label="Loading screen"
     >
       <div className="flex flex-col items-center gap-6 px-6 text-center">
-        <div className="relative flex h-32 w-32 items-center justify-center">
-          <div className="animate-gear absolute h-32 w-32 rounded-full border-2 border-dashed border-primary/25" />
-          <div className="animate-gear-reverse absolute h-24 w-24 rounded-full border border-primary/40" />
-          <div className="absolute h-16 w-16 rounded-full border-2 border-primary/60 bg-card/80 backdrop-blur-sm shadow-md flex items-center justify-center">
+        <div className="relative flex h-40 w-40 items-center justify-center">
+          {[0, 1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full border border-primary/30"
+              initial={{ width: 16, height: 16, opacity: 0.8 }}
+              animate={{
+                width: [16, 160],
+                height: [16, 160],
+                opacity: [0.6, 0],
+                borderWidth: [2, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "easeOut",
+              }}
+            />
+          ))}
+          <div className="absolute h-16 w-16 rounded-full border-2 border-primary/60 bg-card/80 backdrop-blur-sm shadow-md flex items-center justify-center z-10">
             <span className="text-xl font-bold tracking-[0.3em] text-primary pl-[0.3em]">NS</span>
           </div>
-          <div className="absolute h-3 w-3 rounded-full bg-primary animate-pulse-glow" />
         </div>
 
         <div className="space-y-2">
