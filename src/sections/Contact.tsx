@@ -16,11 +16,12 @@ const EMAILJS_SERVICE_ID = "service_v5irr2l";
 const EMAILJS_TEMPLATE_ID = "template_9tpaztn";
 const EMAILJS_PUBLIC_KEY = "EIO93XYjSAcBvwM7m";
 const LOCATION_QUERY = "26.294376, 89.454376";
+const LOCATION_DISPLAY = "Coochbehar, West Bengal, India";
 const LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=26.294376%2C89.454376";
 const LOCATION_EMBED_URL = "https://www.google.com/maps?q=26.294376%2C89.454376&z=15&output=embed";
 
 const contactInfo = [
-  { icon: MapPin, label: "Location", value: LOCATION_QUERY, href: LOCATION_MAP_URL },
+  { icon: MapPin, label: "Location", value: LOCATION_DISPLAY, href: LOCATION_MAP_URL },
   { icon: Phone, label: "Phone", value: "+91 9083334064", href: "tel:+919083334064" },
   { icon: Mail, label: "Email", value: "nabin00032@gmail.com", href: "mailto:nabin00032@gmail.com" },
 ];
