@@ -29,9 +29,7 @@ const LoadingScreen = () => {
               }}
             />
           ))}
-          <div className="absolute h-16 w-16 rounded-full border-2 border-primary/60 bg-card/80 backdrop-blur-sm shadow-md flex items-center justify-center z-10">
-            <span className="text-xl font-bold tracking-[0.3em] text-primary pl-[0.3em]">NS</span>
-          </div>
+          <div className="absolute h-4 w-4 rounded-full bg-muted shadow-sm z-10" />
         </div>
 
         <div className="space-y-2">
