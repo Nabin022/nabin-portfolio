@@ -9,6 +9,7 @@ import Projects from "@/sections/Projects";
 import Experience from "@/sections/Experience";
 import Certifications from "@/sections/Certifications";
 import Extracurricular from "@/sections/Extracurricular";
+import Testimonials from "@/sections/Testimonials";
 import Contact from "@/sections/Contact";
 import Footer from "@/components/Footer";
 
@@ -25,6 +26,7 @@ const Home = () => {
       <Experience />
       <Certifications />
       <Extracurricular />
+      <Testimonials />
       <Contact />
       <Footer />
       <BackToTop />
