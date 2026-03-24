@@ -10,7 +10,11 @@
       ]
     },
     "skipLibCheck": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+
+    // ✅ ADD THESE LINES
+    "types": ["node"],
+    "moduleResolution": "node"
   },
   "files": [],
   "references": [

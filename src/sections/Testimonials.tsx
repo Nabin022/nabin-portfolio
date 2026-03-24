@@ -3,22 +3,22 @@ import { MotionSection } from "@/components/MotionSection";
 import { Quote, Star } from "lucide-react";
 
 const testimonials = [
-  {
-    name: "Prof. Rajesh Sharma",
-    role: "Faculty Advisor, Mechanical Engineering",
-    text: "Nabin demonstrates exceptional analytical skills and a strong work ethic. His ability to bridge mechanical engineering with modern software tools sets him apart from his peers.",
+ {
+    name: "Prof. Gyan Tshering Lepcha",
+    role: "Project Mentor, Mechanical Engineering Department CGEC",
+    text: "Nabin's dedication to his projects is commendable. His technical reports are thorough, well-researched, and demonstrate a deep understanding of mechanical engineering principles.",
     rating: 5,
   },
   {
-    name: "Amit Das",
-    role: "Senior Engineer, Industrial Training Supervisor",
+    name: "Arindam Bhattacharya",
+    role: "Senior Manager, Mejia Thermal Power Station, DVC",
     text: "During his industrial training, Nabin showed remarkable initiative and eagerness to learn. He quickly grasped complex manufacturing processes and contributed meaningful insights to our team.",
     rating: 5,
   },
   {
-    name: "Dr. Suman Roy",
-    role: "Project Guide, B.Tech Department",
-    text: "Nabin's dedication to his projects is commendable. His technical reports are thorough, well-researched, and demonstrate a deep understanding of mechanical engineering principles.",
+    name: "Faculty, Mechanical Engineering Department",
+    role: "Cooch Behar Government Engineering College",
+    text: "Nabin demonstrates exceptional analytical skills and a strong work ethic. His ability to bridge mechanical engineering with modern software tools sets him apart from his peers.",
     rating: 5,
   },
 ];
@@ -32,7 +32,7 @@ const Testimonials = () => {
             Testimonials & <span className="text-primary">Recommendations</span>
           </h2>
           <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-            What mentors and colleagues say about working with me
+            What mentors say about me
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">

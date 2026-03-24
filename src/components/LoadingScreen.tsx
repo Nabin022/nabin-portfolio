@@ -39,7 +39,7 @@ const LoadingScreen = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.4 }}
           >
-            Portfolio Loading
+            Loading...
           </motion.p>
           <motion.h2
             className="text-2xl font-bold text-foreground md:text-3xl"
@@ -47,7 +47,6 @@ const LoadingScreen = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.18, duration: 0.45 }}
           >
-            Nabin Sarkar
           </motion.h2>
           <motion.p
             className="text-sm text-muted-foreground"
@@ -55,7 +54,6 @@ const LoadingScreen = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.26, duration: 0.45 }}
           >
-            Mechanical design • CAD • analysis
           </motion.p>
         </div>
       </div>
